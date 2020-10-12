@@ -1,0 +1,8 @@
+.modal-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-buttons {
+  margin: 0.5rem 0;
+}

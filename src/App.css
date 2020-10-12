@@ -2,3 +2,7 @@
   text-align: center;
   height: 100vh;
 }
+
+.appTitle {
+  padding: 3rem;
+}

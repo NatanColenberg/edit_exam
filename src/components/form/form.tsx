@@ -1,18 +1,16 @@
-import React from 'react';
-import { makeStyles, Theme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
+import React from "react";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
 
-import Patient from '../../model/patientModel';
-import { getPatientDisplayName } from '../../utils/patientUtils';
+import Patient from "../../model/patientModel";
 
-import PatientForm from './patient/patientForm'
+import PatientForm from "./patient/patientForm";
 
-import './form.css'
-import { Button, Dialog, DialogActions, DialogContent } from '@material-ui/core';
+import "./form.css";
+import { DialogContent } from "@material-ui/core";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -43,23 +41,16 @@ function TabPanel(props: TabPanelProps) {
 function a11yProps(index: any) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-  },
-}));
-
 interface Props {
-  patient: Patient
+  patient: Patient;
+  editMode: boolean;
 }
 
 export default function Form(props: Props) {
-  const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
@@ -68,10 +59,15 @@ export default function Form(props: Props) {
 
   return (
     <DialogContent className="formWrap">
-
       {/* Tabs */}
       <AppBar position="static" color="transparent" elevation={0}>
-        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="simple tabs example"
+          variant="fullWidth"
+          indicatorColor="primary"
+        >
           <Tab label="Patient" {...a11yProps(0)} />
           <Tab label="Procedure" {...a11yProps(1)} />
           <Tab label="Study" {...a11yProps(2)} />
@@ -80,7 +76,7 @@ export default function Form(props: Props) {
 
       {/* Patient Form */}
       <TabPanel value={value} index={0}>
-        <PatientForm patient={props.patient} />
+        <PatientForm patient={props.patient} editMode={props.editMode} />
       </TabPanel>
 
       {/* Procedure Form */}
@@ -93,6 +89,5 @@ export default function Form(props: Props) {
         Study Form
       </TabPanel>
     </DialogContent>
-
   );
 }

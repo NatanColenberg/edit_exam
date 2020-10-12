@@ -1,28 +1,44 @@
-export const getPatientName = (name: string) => {
-    const arr = name.split('^');
+export const getName = (name: string) => {
+  const arr = name.split("^");
 
-    const lastName = arr[0];
-    const firstName = arr[1];
-    const middleName = arr[2];
-    const title = arr[3];
-    const suffix = arr[4];
+  const lastName = arr[0];
+  const firstName = arr[1];
+  const middleName = arr[2];
+  const title = arr[3];
+  const suffix = arr[4];
 
-    return {
-        lastName,
-        firstName,
-        middleName,
-        title,
-        suffix
-    }
-}
+  return {
+    lastName,
+    firstName,
+    middleName,
+    title,
+    suffix,
+  };
+};
 
-export const getPatientDisplayName = (name: string) => {
-    const n = getPatientName(name)
-    let res = n.lastName + ", " + n.firstName;
+export const getDisplayName = (name: string) => {
+  const n = getName(name);
+  let res = n.lastName + ", " + n.firstName;
 
-    if (n.title) res = n.title + " " + res
-    if (n.middleName) res += " " + n.middleName
-    if (n.suffix) res += " " + n.suffix
+  if (n.title) res = n.title + " " + res;
+  if (n.middleName) res += " " + n.middleName;
+  if (n.suffix) res += " " + n.suffix;
 
-    return res;
-}
+  return res;
+};
+
+export const getAddress = (address: string) => {
+  const arr = address.split("^"); //"123 Fake Street^^Springfield^CA^12345"
+
+  const street = arr[0];
+  const city = arr[2];
+  const state = arr[3];
+  const zip = arr[4];
+
+  return {
+    street,
+    city,
+    state,
+    zip,
+  };
+};
