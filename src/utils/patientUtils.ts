@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export const getName = (name: string) => {
   const arr = name.split("^");
 
@@ -42,3 +44,24 @@ export const getAddress = (address: string) => {
     zip,
   };
 };
+
+export const getDate = (dob: number | null) => {
+  return moment(dob);
+}
+
+export const getPatientSexIndex = (patientSex: string) => {
+  switch (patientSex.toLowerCase()) {
+    case "male":
+    case "m":
+      return 0;
+    case "female":
+    case "f":
+      return 1;
+    case "other":
+    case "o":
+      return 2;
+    case "unknown":
+    case "u":
+      return 3;
+  }
+}

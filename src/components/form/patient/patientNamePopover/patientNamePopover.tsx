@@ -6,7 +6,6 @@ import {
   Grid,
   TextField,
   Divider,
-  Paper,
 } from "@material-ui/core";
 import { getName } from "../../../../utils/patientUtils";
 import "./patientNamePopover.css";

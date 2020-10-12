@@ -6,3 +6,8 @@
 .appTitle {
   padding: 3rem;
 }
+
+.appDarkMode {
+  margin: 4rem;
+  cursor: pointer;
+}

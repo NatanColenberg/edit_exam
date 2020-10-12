@@ -2,6 +2,9 @@ import { Interface } from "readline";
 
 interface PatientModel {
   name: string;
+  birthDate: {
+    $date: number;
+  };
   birthDateStr: string;
   patientSex: string;
   mrns: MRN[];
@@ -11,6 +14,9 @@ interface PatientModel {
   homePhone: string;
   workPhone: string;
   admitDateTime: {
+    $date: number;
+  };
+  dischargeDateTime: {
     $date: number;
   };
 }

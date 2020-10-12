@@ -41,8 +41,8 @@ interface Props {
 
 export default function TransitionsModal(props: Props) {
   const classes = useStyles();
-  const [open, setOpen] = useState(true);
-  const [editMode, setEditMode] = useState(true);
+  const [open, setOpen] = useState(false);
+  const [editMode, setEditMode] = useState(false);
 
   const handleOpen = () => {
     setOpen(true);
